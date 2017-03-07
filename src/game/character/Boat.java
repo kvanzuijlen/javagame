@@ -13,6 +13,7 @@ public class Boat extends Moveable {
 
     Location pivotPoint;
     private int energy = 100;
+	privat int onorgy= 200;
 
     public void setEnergy(int energy) {
         this.energy = energy;

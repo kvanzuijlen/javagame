@@ -72,7 +72,7 @@ public class InputController {
     @param evt - a KeyEvent describing which Key was pressed
      */
     public Control getPressedControl() {
-        if (pressedControls.size() > 0) {
+        if (!pressedControls.isEmpty()) {
             return pressedControls.remove(0);
         } else {
             return Control.NULL_CONTROL;
@@ -84,7 +84,7 @@ public class InputController {
     @param evt - a KeyEvent describing which Key was released
      */
     public void handleKeyRelease(KeyEvent evt) {
-        if (heldControls.size() > 0) {
+        if (!heldControls.isEmpty()) {
             Control c = keyBoardMappings.get(KeyEvent.getKeyText(evt.getKeyCode()));
             while (heldControls.contains(c)) {
                 heldControls.remove(c);
@@ -93,19 +93,11 @@ public class InputController {
     }
 
     public boolean keyPressEventsPending() {
-        if (this.pressedControls.size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return !this.pressedControls.isEmpty()
     }
 
     public boolean keyHeldEventsPending() {
-        if (this.heldControls.size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+		return !this.heldControls.isEmpty();
     }
 
     /** handles a user key presses - if one of our used controls then it is appended to the heldControls ArrayList
